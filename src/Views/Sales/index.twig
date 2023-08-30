@@ -26,8 +26,9 @@
 
             event.preventDefault();
 
-            if ($('#event_upload_form #file').get(0).files.length === 0)
+            if ($('#event_upload_form #file').get(0).files.length === 0) {
                 return false;
+            }
 
 
             const data = new FormData($('#event_upload_form')[0]);

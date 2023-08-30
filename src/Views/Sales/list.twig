@@ -25,7 +25,7 @@
             {% for sale in salesList %}
                 {% set totalPrice = totalPrice + sale.productPrice %}
                 <tr>
-                    <td>{{ sale.saleDate | date("m/d/Y h:i a", sale.timezone) }}</td>
+                    <td>{{ sale.saleDate | date("m/d/Y h:i:s", sale.timezone) }}</td>
                     <td>{{ sale.customerName }}</td>
                     <td>{{ sale.customerMail }}</td>
                     <td>{{ sale.productName }}</td>
