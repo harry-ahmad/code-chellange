@@ -7,12 +7,10 @@ class VersionComparisonHelper
     /** Compare version for timezone */
     public function compareVersion(string $version): string
     {
-        $version = explode('+', $version);
-        $version = $version[1] ?? VERAION_COMPARE_VAL;
-        if((int)$version < VERAION_COMPARE_VAL){
-            return TIMEZONES['EB'];
+        if(version_compare($version, VERAION_COMPARE_VAL, ">=")){
+            return TIMEZONES['UTC'];
         }
-        return TIMEZONES['UTC'];
+        return TIMEZONES['EB'];
     }
 
 }

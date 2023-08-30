@@ -11,8 +11,8 @@ const SALES_KEYS = [
     'version'
 ];
 
-/** @var int VERAION_COMPARE_VAL */
-const VERAION_COMPARE_VAL = 60;
+/** @var string VERAION_COMPARE_VAL */
+const VERAION_COMPARE_VAL = "1.0.17+60";
 
 /** @var string[] TIMEZONES */
 const TIMEZONES = [
