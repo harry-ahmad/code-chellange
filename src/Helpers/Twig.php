@@ -10,7 +10,7 @@ use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 use Exception;
 
-class TwigHelper
+class Twig
 {
     public static function render(string $name, string $path, ?array $data = []): string
     {

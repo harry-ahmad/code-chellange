@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Helpers\TwigHelper;
+use App\Helpers\Twig;
 use App\Request\Request;
 use App\Services\SalesService;
 use Exception;
@@ -12,8 +12,6 @@ class HomeController
     /** @var SalesService $salesService */
     private $salesService;
 
-    /** @var TwigHelper $twigService */
-    private $twigService;
 
     /** @var Request $request */
     private $request;
@@ -22,14 +20,14 @@ class HomeController
     {
         $this->request = Request::getInstance();
         $this->salesService = new SalesService();
-        $this->twigService = new TwigHelper();
     }
 
+    /** return type not used due to routes and ajax */
     public function index(): void
     {
         try {
             $data = $this->salesService->getSales();
-            $response = $this->twigService->render(
+            $response = Twig::render(
                 'index.twig',
                 'src/Views/sales',
                 ['salesList' => $data]
@@ -45,7 +43,7 @@ class HomeController
         try {
 
             $data = $this->salesService->getSales($this->request->getPost());
-            $response = $this->twigService->render(
+            $response = Twig::render(
                 'list.twig',
                 'src/Views/sales',
                 ['salesList' => $data]
