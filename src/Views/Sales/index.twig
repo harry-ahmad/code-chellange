@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Book Shop</title>
+    <link href="src/assets/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Book Shop Sales</h1>
+<form method="POST" id="filterForm">
+    <input type="input" name="customer_name" placeholder="Customer"/>
+    <input type="input" name="product_name" placeholder="Product"/>
+    <input type="input" name="product_price" placeholder="Price"/>
+    <input type="button" id="applyFilter" name="filter" value="Filter"/>
+    <input type="reset" id="clearFilter" name="reset" value="Reset"/>
+</form>
+<div
+        id="sales_list">
+    {#    {{ list|raw }} #}
+    {% include 'list.twig' with {'salesList': salesList} %}
+</div>
+
+<script src="src/assets/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    (function ($) {
+
+        $(document).off('click', '#import').on('click', '#import', function (event) {
+
+            event.preventDefault();
+
+            if ($('#event_upload_form #file').get(0).files.length === 0)
+                return false;
+
+
+            const data = new FormData($('#event_upload_form')[0]);
+            $.ajax({
+                url: "",
+                type: "POST",
+                mimeType: "multipart/form-data",
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data.status);
+                    alert(data.msg);
+                    if (data.status === 'success') {
+                        setTimeout(() => {
+                            window.location.href = "./"
+                        }, 1000);
+                    }
+
+
+                }
+
+            });
+        });
+
+        $(document).off('click', '#applyFilter').on('click', '#applyFilter', function (event) {
+            event.preventDefault();
+            const data = new FormData($('#filterForm')[0]);
+            $.ajax({
+                url: "filterSales",
+                type: "POST",
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: data,
+                success: function (data) {
+                    $('#sales_list').html(data);
+                }
+            });
+        });
+
+        $(document).off('reset', '#filterForm').on('reset', '#filterForm', function (event) {
+            setTimeout(function () {
+                $('#applyFilter').trigger('click');
+            }, 500)
+        })
+    })(jQuery);
+</script>
+
+
+</body>
+</html>

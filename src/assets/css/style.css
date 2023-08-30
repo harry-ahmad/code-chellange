@@ -1,0 +1,12 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table, td, th {
+    border: 1px solid;
+    padding: 12px;
+}
+
+tr:last-child{
+    font-weight: bold;
+}
