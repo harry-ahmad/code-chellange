@@ -1,5 +1,5 @@
 <?php
- /** @var string[] $salesMap */
+/** @var string[] SALES_KEYS */
 const SALES_KEYS = [
     'sale_id',
     'customer_name',
@@ -10,7 +10,11 @@ const SALES_KEYS = [
     'sale_date',
     'version'
 ];
+
+/** @var integer VERAION_COMPARE_VAL */
 const VERAION_COMPARE_VAL = 60;
+
+/** @var string[] TIMEZONES */
 const TIMEZONES = [
     'EB' => 'Europe/Berlin',
     'UTC' => 'UTC'

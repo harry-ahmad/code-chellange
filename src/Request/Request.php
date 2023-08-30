@@ -91,17 +91,6 @@ class Request
         return $this->isSetPost($key) ? $_POST[$key] : $default;
     }
 
-    public function getRequest($key = null)
-    {
-        if (null === $key) {
-            return $_REQUEST;
-        }
-
-        $key = (string)$key;
-
-        return $this->isSetRequest($key) ? $_REQUEST[$key] : null;
-    }
-
     public function isSetGet($key): bool
     {
         if ($key === null) {
@@ -146,15 +135,6 @@ class Request
         return false;
     }
 
-    public function getRequestMethod()
-    {
-        return $this->requestMethod;
-    }
-
-    public function isPostRequest(): bool
-    {
-        return $this->requestMethod === self::METHOD_POST;
-    }
 
     public function getBody(): string
     {
